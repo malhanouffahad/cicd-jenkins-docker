@@ -10,14 +10,14 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("iakshaykr/webapp")
+        app = docker.build("malhanouffahad/webapp")
     }
 
     stage('Push image') {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+        docker.withRegistry('malhanouffahad/pythonapp', 'dock') {
             app.push("${env.BUILD_NUMBER}")
             app.push("webapppy")
             } 
